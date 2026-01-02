@@ -1,0 +1,37 @@
+mkdir -p app docs \
+  data/countries data/missions/AU data/missions/JP data/missions/FR data/missions/US \
+  data/competitions data/circuits data/roles data/training data/seasons data/rubrics
+
+# Move UI files into /app
+[ -f main.js ] && mv main.js app/main.js
+[ -f style.css ] && mv style.css app/style.css
+
+# Move docs into /docs (your numbered .md files)
+mv ./*.md docs/ 2>/dev/null || true
+
+# Move country configs
+[ -f AU.json ] && mv AU.json data/countries/AU.json
+[ -f JP.json ] && mv JP.json data/countries/JP.json
+[ -f FR.json ] && mv FR.json data/countries/FR.json
+[ -f US.json ] && mv US.json data/countries/US.json
+
+# Move missions by prefix into route folders
+mv AU_m*.json data/missions/AU/ 2>/dev/null || true
+mv JP_m*.json data/missions/JP/ 2>/dev/null || true
+mv FR_m*.json data/missions/FR/ 2>/dev/null || true
+mv US_m*.json data/missions/US/ 2>/dev/null || true
+
+# Move common data
+[ -f catalog.json ] && mv catalog.json data/competitions/catalog.json
+[ -f formats.json ] && mv formats.json data/competitions/formats.json
+[ -f profiles.json ] && mv profiles.json data/competitions/profiles.json
+[ -f circuits.json ] && mv circuits.json data/circuits/circuits.json
+[ -f roles.json ] && mv roles.json data/roles/roles.json
+[ -f sessions.json ] && mv sessions.json data/training/sessions.json
+
+# Seasons / rubrics if present
+[ -f 2026_open_calendar.json ] && mv 2026_open_calendar.json data/seasons/2026_open_calendar.json
+[ -f standard_rubric.json ] && mv standard_rubric.json data/rubrics/standard_rubric.json
+
+# Add .nojekyll if missing
+[ -f .nojekyll ] || touch .nojekyll
