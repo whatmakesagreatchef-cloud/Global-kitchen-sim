@@ -1,0 +1,71 @@
+{
+  "id": "US",
+  "name": "USA Route",
+  "learning_outcomes": [
+    "branding_pressure",
+    "innovation_under_time",
+    "leadership_in_spotlight",
+    "fast_conflict_resolution"
+  ],
+  "starting_resources": {
+    "budget": 1000,
+    "reputation": 12,
+    "weekly_hours_per_member": 8
+  },
+  "system_modifiers": {
+    "skill_gain": {
+      "plating": 1.15,
+      "seasoning": 1.1,
+      "workflow": 1.05
+    },
+    "fatigue_gain": 1.0,
+    "sponsor_difficulty": 0.95,
+    "conflict_chance": 1.1
+  },
+  "conflict_profile": {
+    "hierarchy": 0.95,
+    "ego": 1.25,
+    "communication": 1.1,
+    "standards_vs_speed": 1.0,
+    "creativity_vs_tradition": 1.1
+  },
+  "rubric_bias": {
+    "taste": 1.05,
+    "technique": 1.0,
+    "workflow": 1.0,
+    "hygiene": 1.0,
+    "presentation": 1.1,
+    "timing": 1.0
+  },
+  "content": {
+    "missions": [
+      "US_m001_tryouts",
+      "US_m002_choose_circuit",
+      "US_m003_assign_roles",
+      "US_m003b_define_roles",
+      "US_m004_funding_facility",
+      "US_m005_solo_training_block",
+      "US_m006_solo_local_entry",
+      "US_m007_solo_nationals_prep",
+      "US_m005b_bocuse_pair_sync",
+      "US_m006b_bocuse_trials_entry",
+      "US_m007b_bocuse_final_prep",
+      "US_m005c_team_selection_camp",
+      "US_m006c_workflow_rehearsal",
+      "US_m007c_worldcup_qual_prep",
+      "US_m008c_olympics_push",
+      "US_m005d_pastry_showpiece_block",
+      "US_m006d_pastry_entry",
+      "US_m007d_salon_prep",
+      "US_m009_conflict_mediation"
+    ],
+    "events": [
+      "GEV_station_war",
+      "GEV_sponsor_fallthrough",
+      "GEV_equipment_failure",
+      "GEV_burnout_warning",
+      "GEV_supplier_short",
+      "GEV_team_bond"
+    ]
+  }
+}

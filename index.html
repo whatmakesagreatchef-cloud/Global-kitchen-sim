@@ -1,1 +1,83 @@
-<!doctype html><html><head><meta charset='utf-8'><title>Global Kitchen Simulator</title></head><body><h1>Global Kitchen Simulator</h1><p>Starter content pack only. Add engine + UI in /src.</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Kitchen Sim</title>
+  <link rel="stylesheet" href="./app/style.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Global Kitchen Sim</h1>
+      <p class="sub">Career Story Mode • data‑driven • runs in your browser (GitHub Pages ready)</p>
+    </div>
+    <div class="row">
+      <button id="btnReset" class="secondary">Reset</button>
+      <a id="btnDocs" class="secondary" href="./docs/" target="_blank" rel="noreferrer">Docs Folder</a>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>1) Choose Route</h2>
+      <div id="routes" class="row"></div>
+      <p class="hint">Routes load from <code>/data/countries/*.json</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>2) Game State</h2>
+      <div class="kv" id="stateKv"></div>
+      <details>
+        <summary>Flags</summary>
+        <pre id="flagsOut"></pre>
+      </details>
+    </section>
+
+    <section class="card span2">
+      <h2>3) Current Mission</h2>
+      <div id="missionMeta" class="meta"></div>
+      <div id="missionIntro" class="prose"></div>
+      <div id="missionChoices" class="choices"></div>
+      <hr />
+      <div id="resultBox" class="result"></div>
+    </section>
+
+    <section class="card span2">
+      <h2>4) Competition Day</h2>
+      <p class="hint">Pick a competition from the catalog that your current state qualifies for, then simulate the day.</p>
+      <div class="row">
+        <label class="hint">Team size:
+          <input id="teamSize" type="number" min="1" max="12" value="4" style="width:80px; margin-left:8px;" />
+        </label>
+        <select id="compSelect" style="min-width: 320px; padding:10px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text);">
+        </select>
+        <button id="btnSimulate">Simulate</button>
+        <button id="btnRefreshComps" class="secondary">Refresh list</button>
+      </div>
+      <details style="margin-top:10px;">
+        <summary>Score breakdown</summary>
+        <pre id="compOut"></pre>
+      </details>
+      <div id="compSummary" class="result" style="margin-top:10px;"></div>
+    </section>
+
+<section class="card span2">
+      <h2>Loaded Data</h2>
+      <div class="row">
+        <button id="btnSeason" class="secondary">Show Season Offers</button>
+        <button id="btnCatalog" class="secondary">Show Competition Catalog</button>
+        <button id="btnRoles" class="secondary">Show Roles</button>
+        <button id="btnTraining" class="secondary">Show Training Sessions</button>
+      </div>
+      <pre id="dataOut"></pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Tip: publish via GitHub Pages (Settings → Pages → Deploy from branch → main / root).</span>
+  </footer>
+
+  <script type="module" src="./app/main.js"></script>
+</body>
+</html>

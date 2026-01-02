@@ -1,0 +1,69 @@
+{
+  "id": "JP",
+  "name": "Japan Route",
+  "learning_outcomes": [
+    "precision_standards",
+    "role_clarity",
+    "process_mastery",
+    "silent_tension_management"
+  ],
+  "starting_resources": {
+    "budget": 800,
+    "reputation": 6,
+    "weekly_hours_per_member": 10
+  },
+  "system_modifiers": {
+    "skill_gain": {
+      "knife": 1.2,
+      "workflow": 1.15,
+      "plating": 1.1
+    },
+    "fatigue_gain": 1.1,
+    "sponsor_difficulty": 1.2,
+    "conflict_chance": 0.95
+  },
+  "conflict_profile": {
+    "hierarchy": 1.2,
+    "ego": 0.95,
+    "communication": 1.05,
+    "standards_vs_speed": 1.1,
+    "creativity_vs_tradition": 0.9
+  },
+  "rubric_bias": {
+    "taste": 1.0,
+    "technique": 1.1,
+    "workflow": 1.1,
+    "hygiene": 1.0,
+    "presentation": 1.1,
+    "timing": 1.0
+  },
+  "content": {
+    "missions": [
+      "JP_m001_tryouts",
+      "JP_m002_choose_circuit",
+      "JP_m003_assign_roles",
+      "JP_m003b_define_roles",
+      "JP_m004_funding_facility",
+      "JP_m005_solo_training_block",
+      "JP_m006_solo_local_entry",
+      "JP_m007_solo_nationals_prep",
+      "JP_m005b_bocuse_pair_sync",
+      "JP_m006b_bocuse_trials_entry",
+      "JP_m007b_bocuse_final_prep",
+      "JP_m005c_team_selection_camp",
+      "JP_m006c_workflow_rehearsal",
+      "JP_m007c_worldcup_qual_prep",
+      "JP_m008c_olympics_push",
+      "JP_m005d_pastry_showpiece_block",
+      "JP_m006d_pastry_entry",
+      "JP_m007d_salon_prep",
+      "JP_m009_conflict_mediation"
+    ],
+    "events": [
+      "GEV_station_war",
+      "GEV_equipment_failure",
+      "GEV_burnout_warning",
+      "GEV_team_bond"
+    ]
+  }
+}

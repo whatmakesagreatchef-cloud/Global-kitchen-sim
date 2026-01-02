@@ -1,0 +1,70 @@
+{
+  "id": "FR",
+  "name": "France Route",
+  "learning_outcomes": [
+    "classical_foundations",
+    "critique_culture",
+    "brigade_structure",
+    "tradition_vs_innovation"
+  ],
+  "starting_resources": {
+    "budget": 1100,
+    "reputation": 8,
+    "weekly_hours_per_member": 9
+  },
+  "system_modifiers": {
+    "skill_gain": {
+      "sauce": 1.25,
+      "pastry": 1.15,
+      "workflow": 1.05
+    },
+    "fatigue_gain": 1.0,
+    "sponsor_difficulty": 1.1,
+    "conflict_chance": 1.05
+  },
+  "conflict_profile": {
+    "hierarchy": 1.25,
+    "ego": 1.15,
+    "communication": 0.9,
+    "standards_vs_speed": 1.05,
+    "creativity_vs_tradition": 1.15
+  },
+  "rubric_bias": {
+    "taste": 1.05,
+    "technique": 1.15,
+    "workflow": 1.0,
+    "hygiene": 1.0,
+    "presentation": 1.0,
+    "timing": 1.0
+  },
+  "content": {
+    "missions": [
+      "FR_m001_tryouts",
+      "FR_m002_choose_circuit",
+      "FR_m003_assign_roles",
+      "FR_m003b_define_roles",
+      "FR_m004_funding_facility",
+      "FR_m005_solo_training_block",
+      "FR_m006_solo_local_entry",
+      "FR_m007_solo_nationals_prep",
+      "FR_m005b_bocuse_pair_sync",
+      "FR_m006b_bocuse_trials_entry",
+      "FR_m007b_bocuse_final_prep",
+      "FR_m005c_team_selection_camp",
+      "FR_m006c_workflow_rehearsal",
+      "FR_m007c_worldcup_qual_prep",
+      "FR_m008c_olympics_push",
+      "FR_m005d_pastry_showpiece_block",
+      "FR_m006d_pastry_entry",
+      "FR_m007d_salon_prep",
+      "FR_m009_conflict_mediation"
+    ],
+    "events": [
+      "GEV_station_war",
+      "GEV_sponsor_fallthrough",
+      "GEV_equipment_failure",
+      "GEV_burnout_warning",
+      "GEV_team_bond"
+    ]
+  }
+}

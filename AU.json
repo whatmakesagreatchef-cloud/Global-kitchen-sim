@@ -1,0 +1,71 @@
+{
+  "id": "AU",
+  "name": "Australia Route",
+  "learning_outcomes": [
+    "funding_hustle",
+    "timeboxing",
+    "mentor_network",
+    "team_culture"
+  ],
+  "starting_resources": {
+    "budget": 900,
+    "reputation": 10,
+    "weekly_hours_per_member": 9
+  },
+  "system_modifiers": {
+    "skill_gain": {
+      "workflow": 1.1,
+      "seasoning": 1.05,
+      "knife": 1.05
+    },
+    "fatigue_gain": 1.0,
+    "sponsor_difficulty": 1.1,
+    "conflict_chance": 1.0
+  },
+  "conflict_profile": {
+    "hierarchy": 0.95,
+    "ego": 1.1,
+    "communication": 1.05,
+    "standards_vs_speed": 1.15,
+    "creativity_vs_tradition": 1.0
+  },
+  "rubric_bias": {
+    "taste": 1.05,
+    "technique": 1.0,
+    "workflow": 1.05,
+    "hygiene": 1.0,
+    "presentation": 1.0,
+    "timing": 1.05
+  },
+  "content": {
+    "missions": [
+      "AU_m001_tryouts",
+      "AU_m002_choose_circuit",
+      "AU_m003_assign_roles",
+      "AU_m003b_define_roles",
+      "AU_m004_funding_facility",
+      "AU_m005_solo_training_block",
+      "AU_m006_solo_local_entry",
+      "AU_m007_solo_nationals_prep",
+      "AU_m005b_bocuse_pair_sync",
+      "AU_m006b_bocuse_trials_entry",
+      "AU_m007b_bocuse_final_prep",
+      "AU_m005c_team_selection_camp",
+      "AU_m006c_workflow_rehearsal",
+      "AU_m007c_worldcup_qual_prep",
+      "AU_m008c_olympics_push",
+      "AU_m005d_pastry_showpiece_block",
+      "AU_m006d_pastry_entry",
+      "AU_m007d_salon_prep",
+      "AU_m009_conflict_mediation"
+    ],
+    "events": [
+      "GEV_station_war",
+      "GEV_sponsor_fallthrough",
+      "GEV_equipment_failure",
+      "GEV_burnout_warning",
+      "GEV_supplier_short",
+      "GEV_team_bond"
+    ]
+  }
+}
