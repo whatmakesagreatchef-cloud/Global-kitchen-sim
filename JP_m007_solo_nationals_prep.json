@@ -1,0 +1,118 @@
+{
+  "id": "JP_m007_solo_nationals_prep",
+  "title": "Nationals Pressure Prep",
+  "chapter": "CH5_QUALIFIERS",
+  "week": 10,
+  "type": "story",
+  "intro": [
+    "If you’ve earned it, nationals are next.",
+    "This week is about consistency — no hero moments."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_QUALIFIED_SOLO"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_consistency",
+      "label": "Consistency camp (reps + timing calls)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 22,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your execution becomes boring — and that’s why it wins.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_NATIONALS_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_NATIONALS_READY"
+          ]
+        },
+        "fail": {
+          "text": "Small errors linger. You need a discipline reset.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 5
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_media",
+      "label": "Media + sponsor obligations (reputation up, fatigue up)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 18,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your brand rises. Your body pays.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 6
+            }
+          ]
+        },
+        "fail": {
+          "text": "You spend the time and gain little. The team feels used.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -3
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

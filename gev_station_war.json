@@ -1,0 +1,78 @@
+{
+  "id": "GEV_station_war",
+  "title": "Station War",
+  "trigger": {
+    "type": "conditional",
+    "all": [
+      {
+        "path": "team.fatigue",
+        "gte": 60
+      },
+      {
+        "path": "team.cohesion",
+        "lte": 52
+      }
+    ]
+  },
+  "text": "Two members clash on the pass: standards versus speed. The whole kitchen feels it.",
+  "choices": [
+    {
+      "label": "Mediate now (lose time, gain trust)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.available_hours",
+          "value": -2
+        },
+        {
+          "op": "inc",
+          "path": "team.cohesion",
+          "value": 8
+        },
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "label": "Set clear station roles (structure reduces future conflict)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.cohesion",
+          "value": 5
+        },
+        {
+          "op": "set_flag",
+          "value": "FLAG_ROLES_DEFINED"
+        },
+        {
+          "op": "inc",
+          "path": "team.workflow_bonus",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "Pick a side (short-term focus, long-term damage)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": 3
+        },
+        {
+          "op": "inc",
+          "path": "team.cohesion",
+          "value": -10
+        },
+        {
+          "op": "set_flag",
+          "value": "FLAG_FAVOURITISM"
+        }
+      ]
+    }
+  ]
+}

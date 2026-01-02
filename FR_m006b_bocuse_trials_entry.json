@@ -1,0 +1,102 @@
+{
+  "id": "FR_m006b_bocuse_trials_entry",
+  "title": "Bocuse Trials Entry",
+  "chapter": "CH3_TRAINING",
+  "week": 8,
+  "type": "story",
+  "intro": [
+    "Trials are where you learn what pressure feels like.",
+    "Enter now or wait and risk missing the cycle."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_BOCUSE"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_enter",
+      "label": "Enter Bocuse trials",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You lock in the trials. The next weeks become rehearsal reality.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_BOCUSE_ENTERED_TRIALS"
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            }
+          ],
+          "set_flags": [
+            "FLAG_BOCUSE_ENTERED_TRIALS"
+          ]
+        },
+        "fail": {
+          "text": "You miss the paperwork and lose your slot.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_wait",
+      "label": "Wait one cycle (train more, but lose momentum)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 0,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You buy time, but sponsors question the plan.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -1
+            }
+          ]
+        },
+        "fail": {
+          "text": "N/A",
+          "effects": []
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

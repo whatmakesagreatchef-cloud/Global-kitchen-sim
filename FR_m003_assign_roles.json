@@ -1,0 +1,221 @@
+{
+  "id": "FR_m003_assign_roles",
+  "title": "Assign Roles & Stations",
+  "chapter": "CH2_FUNDING",
+  "week": 3,
+  "type": "story",
+  "intro": [
+    "With a circuit chosen, your next job is structure.",
+    "The right roles reduce chaos. The wrong ones create conflict that shows up on the plate."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_solo_assign",
+      "label": "Solo setup: assign one competitor and build a support rhythm",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 10,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You define the solo competitor pathway. Training becomes focused and measurable.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_SOLO_ROSTER_SET"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -1
+            }
+          ],
+          "set_flags": [
+            "FLAG_SOLO_ROSTER_SET"
+          ]
+        },
+        "fail": {
+          "text": "The plan is unclear. Everyone thinks they’re the competitor.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -4
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLE_AMBIGUITY"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_bocuse_pair",
+      "label": "Bocuse setup: lock in candidate + commis (two-person system)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You commit to a pair. Communication becomes the real technique.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_BOCUSE_PAIR_SET"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_BOCUSE_PAIR_SET"
+          ]
+        },
+        "fail": {
+          "text": "Two strong personalities refuse to be the commis.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -5
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_EGO_PRESENT"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c3_team_map",
+      "label": "Team setup: assign captain + leads and map stations (hot/larder/pastry)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Stations become predictable. The kitchen starts to breathe.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_TEAM_STATION_MAP"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.workflow_bonus",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_TEAM_STATION_MAP"
+          ]
+        },
+        "fail": {
+          "text": "The map exists on paper, but nobody owns it in practice.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 6
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_STATION_TENSION"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c4_pastry_roles",
+      "label": "Pastry setup: assign pastry competitor and protect focused hours",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 12,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You protect the fragile work. The team respects the craft.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_PASTRY_ROSTER_SET"
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 1
+            }
+          ],
+          "set_flags": [
+            "FLAG_PASTRY_ROSTER_SET"
+          ]
+        },
+        "fail": {
+          "text": "Pastry becomes 'help when we can' — which means never.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_PASTRY_NEGLECTED"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

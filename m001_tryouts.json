@@ -1,0 +1,119 @@
+{
+  "id": "JP_m001_tryouts",
+  "title": "Standards at Dawn",
+  "chapter": "CH1_TRYOUTS",
+  "week": 1,
+  "type": "story",
+  "intro": [
+    "No one raises their voice. The knives still sound loud.",
+    "Here, trust comes from repetition and standards — not words."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_define_roles",
+      "label": "Define roles immediately (clarity over comfort)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 20,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "The room relaxes. Everyone knows where they belong.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.workflow_bonus",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLES_DEFINED"
+            }
+          ],
+          "set_flags": [
+            "FLAG_ROLES_DEFINED"
+          ]
+        },
+        "fail": {
+          "text": "You move too fast. The hierarchy resists the structure you set.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -3
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_TENSION_UNDER_SURFACE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_push_speed",
+      "label": "Push speed first (prove you can execute under time)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 30,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You hit the timing, but small errors stack up. Standards will demand payment later.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 4
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_RUSHED_PREP"
+            }
+          ]
+        },
+        "fail": {
+          "text": "Rushing breaks the room. People stop communicating to avoid blame.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -6
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

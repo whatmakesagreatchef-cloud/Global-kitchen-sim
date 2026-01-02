@@ -1,0 +1,100 @@
+{
+  "id": "FR_m003b_define_roles",
+  "title": "Define Roles Before Chaos",
+  "chapter": "CH2_FUNDING",
+  "week": 3,
+  "type": "story",
+  "intro": [
+    "Before you can assign stations, you need role clarity.",
+    "If you skip this, conflict events will spike."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [
+      "FLAG_ROLES_DEFINED"
+    ],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_define_now",
+      "label": "Define roles now (captain/candidate/commis/leads as needed)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 10,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "The team relaxes. Everyone knows what they are responsible for.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLES_DEFINED"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 5
+            }
+          ],
+          "set_flags": [
+            "FLAG_ROLES_DEFINED"
+          ]
+        },
+        "fail": {
+          "text": "You try, but the room resists structure. Someone wants control.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -3
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_EGO_PRESENT"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_delay",
+      "label": "Delay it (focus on training first)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 0,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You postpone role clarity. Training happens, but tension grows.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 4
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLE_AMBIGUITY"
+            }
+          ]
+        },
+        "fail": {
+          "text": "N/A",
+          "effects": []
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

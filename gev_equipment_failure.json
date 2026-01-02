@@ -1,0 +1,54 @@
+{
+  "id": "GEV_equipment_failure",
+  "title": "Equipment Failure",
+  "trigger": {
+    "type": "weekly_roll",
+    "base_chance": 0.05,
+    "modifiers": [
+      {
+        "if": {
+          "flag": "FLAG_RUSHED_PREP"
+        },
+        "add": 0.03
+      }
+    ]
+  },
+  "text": "A critical piece of equipment fails during prep. Timing gets tight fast.",
+  "choices": [
+    {
+      "label": "Improvise (workflow test)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.risk",
+          "value": 3
+        },
+        {
+          "op": "inc",
+          "path": "team.workflow_bonus",
+          "value": 1
+        },
+        {
+          "op": "inc",
+          "path": "team.fatigue",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "label": "Borrow/rent (budget hit, steadier output)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.budget",
+          "value": -220
+        },
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": 2
+        }
+      ]
+    }
+  ]
+}

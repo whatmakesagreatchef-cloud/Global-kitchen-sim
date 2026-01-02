@@ -1,0 +1,79 @@
+{
+  "id": "US_m007d_salon_prep",
+  "title": "Salon Prep (Cold Display)",
+  "chapter": "CH6_GLOBAL_PUSH",
+  "week": 12,
+  "type": "story",
+  "intro": [
+    "Salon is judged with eyes first.",
+    "Symmetry, finish, hygiene — and no excuses."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_PASTRY_QUALIFIED"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_finish_audit",
+      "label": "Finish audit (tighten every edge)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 24,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your display looks clean and intentional.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_SALON_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_SALON_READY"
+          ]
+        },
+        "fail": {
+          "text": "You discover flaws late. Fixes cost time and morale.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.available_hours",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

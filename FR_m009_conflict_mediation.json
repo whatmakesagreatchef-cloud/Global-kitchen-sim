@@ -1,0 +1,118 @@
+{
+  "id": "FR_m009_conflict_mediation",
+  "title": "Mediation: Save the Pass",
+  "chapter": "CH4_SETBACK",
+  "week": 9,
+  "type": "story",
+  "intro": [
+    "Conflict is costing performance.",
+    "You can either lead now, or pay later on comp day."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_STATION_TENSION"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_mediate",
+      "label": "Mediate (time cost, cohesion recovery)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 18,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "People feel heard. Roles become clearer.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.available_hours",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 8
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_CONFLICT_RESOLVED"
+            }
+          ]
+        },
+        "fail": {
+          "text": "The meeting explodes. You lose a night and gain nothing.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -4
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_discipline",
+      "label": "Discipline (short-term order, morale hit)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Order returns. Trust takes longer.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.workflow_bonus",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -4
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_CONFLICT_SUPPRESSED"
+            }
+          ]
+        },
+        "fail": {
+          "text": "They resist. The room fractures.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -6
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_PASS_ARGUMENTS"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

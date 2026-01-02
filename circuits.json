@@ -1,0 +1,110 @@
+{
+  "version": "v1",
+  "circuits": [
+    {
+      "id": "circuit_solo",
+      "name": "Solo Circuit",
+      "description": "From local cook-offs to a national solo final. Focus: personal execution and resilience.",
+      "stages": [
+        {
+          "stage": 1,
+          "competition_id": "comp_local_solo",
+          "on_win_set_flags": [
+            "FLAG_QUALIFIED_SOLO"
+          ]
+        },
+        {
+          "stage": 2,
+          "competition_id": "comp_national_solo",
+          "on_win_set_flags": [
+            "FLAG_SOLO_CHAMPION"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "circuit_bocuse",
+      "name": "Bocuse Track",
+      "description": "Candidate + commis, showpiece pressure, theatre and perfection.",
+      "stages": [
+        {
+          "stage": 1,
+          "competition_id": "comp_bocuse_trials",
+          "on_win_set_flags": [
+            "FLAG_BOCUSE_QUALIFIED"
+          ]
+        },
+        {
+          "stage": 2,
+          "competition_id": "comp_bocuse_final",
+          "on_win_set_flags": [
+            "FLAG_BOCUSE_MEDAL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "circuit_team_global",
+      "name": "World Cup / Olympics Team Track",
+      "description": "Bigger team, bigger conflict, bigger logistics. Workflow and cohesion are everything.",
+      "stages": [
+        {
+          "stage": 1,
+          "competition_id": "comp_team_worldcup_qual",
+          "on_win_set_flags": [
+            "FLAG_TEAM_SELECTED"
+          ]
+        },
+        {
+          "stage": 2,
+          "competition_id": "comp_culinary_olympics",
+          "on_win_set_flags": [
+            "FLAG_GLOBAL_MEDAL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "circuit_pastry",
+      "name": "Pastry Track",
+      "description": "Showpieces, precision, and calm under fragile pressure.",
+      "stages": [
+        {
+          "stage": 1,
+          "competition_id": "comp_pastry_showpiece",
+          "on_win_set_flags": [
+            "FLAG_PASTRY_QUALIFIED"
+          ]
+        },
+        {
+          "stage": 2,
+          "competition_id": "comp_cold_display_salon",
+          "on_win_set_flags": [
+            "FLAG_PASTRY_SALON_MEDAL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "circuit_worldcup",
+      "name": "World Cup Team Track",
+      "description": "Qualify as a team, then face the global final where systems and cohesion decide everything.",
+      "stages": [
+        {
+          "stage": 1,
+          "competition_id": "comp_team_worldcup_qual",
+          "on_win_set_flags": [
+            "FLAG_WORLD_CUP_QUALIFIED"
+          ]
+        },
+        {
+          "stage": 2,
+          "competition_id": "comp_worldcup_final",
+          "on_win_set_flags": [
+            "FLAG_WORLD_CUP_MEDAL"
+          ]
+        }
+      ]
+    }
+  ]
+}

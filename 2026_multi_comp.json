@@ -1,0 +1,94 @@
+{
+  "id": "season_2026_multi_comp",
+  "weeks": 16,
+  "chapters": [
+    {
+      "chapter": "CH1_TRYOUTS",
+      "weeks": [
+        1,
+        2
+      ]
+    },
+    {
+      "chapter": "CH2_FUNDING",
+      "weeks": [
+        3,
+        4
+      ]
+    },
+    {
+      "chapter": "CH3_TRAINING",
+      "weeks": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "chapter": "CH4_SETBACK",
+      "weeks": [
+        9
+      ]
+    },
+    {
+      "chapter": "CH5_QUALIFIERS",
+      "weeks": [
+        10,
+        11
+      ]
+    },
+    {
+      "chapter": "CH6_GLOBAL_PUSH",
+      "weeks": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "mode": "circuit_or_mixed",
+  "available_circuits": [
+    "circuit_solo",
+    "circuit_bocuse",
+    "circuit_team_global"
+  ],
+  "competition_weeks": [
+    {
+      "week": 8,
+      "competition_id": "comp_bocuse_trials"
+    },
+    {
+      "week": 10,
+      "competition_id": "comp_team_worldcup_qual"
+    },
+    {
+      "week": 12,
+      "competition_id": "comp_bocuse_final"
+    },
+    {
+      "week": 16,
+      "competition_id": "comp_culinary_olympics"
+    }
+  ],
+  "optional_opportunities": [
+    {
+      "week": 6,
+      "competition_id": "comp_mystery_box_solo"
+    },
+    {
+      "week": 7,
+      "competition_id": "comp_relay_team_local"
+    },
+    {
+      "week": 9,
+      "competition_id": "comp_cold_display_salon"
+    },
+    {
+      "week": 9,
+      "competition_id": "comp_pastry_showpiece"
+    }
+  ]
+}

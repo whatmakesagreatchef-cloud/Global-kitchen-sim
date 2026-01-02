@@ -1,0 +1,125 @@
+{
+  "id": "FR_m005d_pastry_showpiece_block",
+  "title": "Pastry Showpiece Block",
+  "chapter": "CH3_TRAINING",
+  "week": 5,
+  "type": "story",
+  "intro": [
+    "Showpieces punish rushing and reward calm.",
+    "Structure and finish are your currency."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_PASTRY"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_structure",
+      "label": "Structure week (build strength + stability)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Cracks reduce. Confidence rises.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_SHOWPIECE_STABLE"
+            }
+          ],
+          "set_flags": [
+            "FLAG_SHOWPIECE_STABLE"
+          ]
+        },
+        "fail": {
+          "text": "Breakages happen. The team feels fragile.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_finish",
+      "label": "Finish week (edges, shine, symmetry)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "The work looks judged-ready.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_SALON_FINISH"
+            }
+          ],
+          "set_flags": [
+            "FLAG_SALON_FINISH"
+          ]
+        },
+        "fail": {
+          "text": "The finish feels rushed. Salon judges will see it.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

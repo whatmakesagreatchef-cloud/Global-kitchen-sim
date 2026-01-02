@@ -1,0 +1,66 @@
+{
+  "id": "GEV_sponsor_fallthrough",
+  "title": "Sponsor Falls Through",
+  "trigger": {
+    "type": "weekly_roll",
+    "base_chance": 0.06,
+    "modifiers": [
+      {
+        "if": {
+          "path": "team.reputation",
+          "lte": 20
+        },
+        "add": 0.04
+      },
+      {
+        "if": {
+          "path": "team.budget",
+          "lte": 400
+        },
+        "add": 0.05
+      }
+    ]
+  },
+  "text": "A sponsor pulls out at the last minute. Your budget plan collapses overnight.",
+  "choices": [
+    {
+      "label": "Run a community fundraiser (gain budget, lose hours)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.budget",
+          "value": 450
+        },
+        {
+          "op": "inc",
+          "path": "team.available_hours",
+          "value": -4
+        },
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "label": "Cut costs (save budget, morale hit)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.budget",
+          "value": 150
+        },
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": -6
+        },
+        {
+          "op": "set_flag",
+          "value": "FLAG_COST_CUTS"
+        }
+      ]
+    }
+  ]
+}

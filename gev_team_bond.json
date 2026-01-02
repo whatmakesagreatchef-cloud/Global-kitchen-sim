@@ -1,0 +1,50 @@
+{
+  "id": "GEV_team_bond",
+  "title": "A Small Win",
+  "trigger": {
+    "type": "weekly_roll",
+    "base_chance": 0.07,
+    "modifiers": [
+      {
+        "if": {
+          "path": "team.cohesion",
+          "gte": 60
+        },
+        "add": 0.03
+      }
+    ]
+  },
+  "text": "Someone stays back to help another finish. No one asked. The room shifts.",
+  "choices": [
+    {
+      "label": "Celebrate it (morale + cohesion)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": 6
+        },
+        {
+          "op": "inc",
+          "path": "team.cohesion",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "label": "Keep it quiet (standards culture, smaller gain)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": 2
+        },
+        {
+          "op": "inc",
+          "path": "team.cohesion",
+          "value": 3
+        }
+      ]
+    }
+  ]
+}

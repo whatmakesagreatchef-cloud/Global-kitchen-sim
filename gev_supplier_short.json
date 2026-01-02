@@ -1,0 +1,54 @@
+{
+  "id": "GEV_supplier_short",
+  "title": "Supplier Shortage",
+  "trigger": {
+    "type": "weekly_roll",
+    "base_chance": 0.05,
+    "modifiers": [
+      {
+        "if": {
+          "path": "team.budget",
+          "lte": 500
+        },
+        "add": 0.03
+      }
+    ]
+  },
+  "text": "Your planned ingredients aren’t available. You must adapt without losing identity.",
+  "choices": [
+    {
+      "label": "Adapt the dish (creativity + workflow)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.reputation",
+          "value": 2
+        },
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": 1
+        },
+        {
+          "op": "set_flag",
+          "value": "FLAG_ADAPTED_MENU"
+        }
+      ]
+    },
+    {
+      "label": "Chase alternatives (time cost, safer output)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.available_hours",
+          "value": -3
+        },
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": 2
+        }
+      ]
+    }
+  ]
+}

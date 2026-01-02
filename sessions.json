@@ -1,0 +1,115 @@
+{
+  "version": "v1",
+  "sessions": [
+    {
+      "id": "sess_knife_reps",
+      "name": "Knife Reps (Precision Cuts)",
+      "category": "drill",
+      "hours_cost": 2,
+      "fatigue": 6,
+      "skill_gains": {
+        "knife": 4,
+        "workflow": 1
+      },
+      "relationship_effect": {
+        "cohesion": 1
+      }
+    },
+    {
+      "id": "sess_mock_service",
+      "name": "Mock Service (Hot Kitchen)",
+      "category": "simulation",
+      "hours_cost": 4,
+      "fatigue": 10,
+      "skill_gains": {
+        "workflow": 4,
+        "timing": 4,
+        "hygiene": 2
+      },
+      "relationship_effect": {
+        "cohesion": 2
+      },
+      "flags_risk": [
+        "FLAG_RUSHED_PREP"
+      ]
+    },
+    {
+      "id": "sess_plating_runs",
+      "name": "Plating Runs (Consistency)",
+      "category": "drill",
+      "hours_cost": 3,
+      "fatigue": 7,
+      "skill_gains": {
+        "presentation": 4,
+        "timing": 2,
+        "workflow": 1
+      },
+      "relationship_effect": {
+        "cohesion": 1
+      }
+    },
+    {
+      "id": "sess_bocuse_rehearsal",
+      "name": "Bocuse Rehearsal (Platter + Plates)",
+      "category": "format_specific",
+      "hours_cost": 6,
+      "fatigue": 12,
+      "skill_gains": {
+        "technique": 4,
+        "presentation": 5,
+        "timing": 3,
+        "workflow": 2
+      },
+      "relationship_effect": {
+        "cohesion": 2
+      },
+      "requires_format": "bocuse_style"
+    },
+    {
+      "id": "sess_relay_handoffs",
+      "name": "Relay Handoffs (Station Sync)",
+      "category": "format_specific",
+      "hours_cost": 4,
+      "fatigue": 9,
+      "skill_gains": {
+        "workflow": 5,
+        "timing": 3
+      },
+      "relationship_effect": {
+        "cohesion": 3
+      },
+      "requires_format": "team_relay"
+    },
+    {
+      "id": "sess_cold_finish",
+      "name": "Cold Display Finish (Edges + Symmetry)",
+      "category": "format_specific",
+      "hours_cost": 4,
+      "fatigue": 6,
+      "skill_gains": {
+        "presentation": 6,
+        "hygiene": 2,
+        "technique": 2
+      },
+      "relationship_effect": {
+        "cohesion": 1
+      },
+      "requires_format": "team_cold_display"
+    },
+    {
+      "id": "sess_sugar_work",
+      "name": "Sugar Work (Heat Control + Structure)",
+      "category": "format_specific",
+      "hours_cost": 5,
+      "fatigue": 8,
+      "skill_gains": {
+        "technique": 5,
+        "presentation": 4
+      },
+      "relationship_effect": {
+        "cohesion": 1
+      },
+      "requires_format": "pastry_showpiece"
+    }
+  ]
+}

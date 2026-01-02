@@ -1,0 +1,161 @@
+{
+  "id": "US_m004_funding_facility",
+  "title": "Funding & Facilities Reality",
+  "chapter": "CH2_FUNDING",
+  "week": 4,
+  "type": "story",
+  "intro": [
+    "You need a kitchen, time, and money. You rarely get all three.",
+    "Pick your approach — each has a cost."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_sponsor_pitch",
+      "label": "Pitch sponsors (reputation check, bigger upside)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 18,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "A sponsor is interested. Expectations arrive with the money.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.budget",
+              "value": 800
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 4
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_SPONSOR_INTEREST"
+            }
+          ],
+          "set_flags": [
+            "FLAG_SPONSOR_INTEREST"
+          ]
+        },
+        "fail": {
+          "text": "You don’t land it. The rejection stings, but you learn.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -3
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_fundraiser",
+      "label": "Run a fundraiser cook (guaranteed budget, fatigue hit)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 0,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "It’s hard work, but it keeps the season alive.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.budget",
+              "value": 450
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -1
+            }
+          ]
+        },
+        "fail": {
+          "text": "N/A",
+          "effects": []
+        }
+      }
+    },
+    {
+      "id": "c3_kitchen_access",
+      "label": "Negotiate kitchen access (hours boost, political cost)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You secure training space. Time becomes your currency again.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.available_hours",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_KITCHEN_SECURED"
+            }
+          ],
+          "set_flags": [
+            "FLAG_KITCHEN_SECURED"
+          ]
+        },
+        "fail": {
+          "text": "You get limited hours, and the best shifts are taken.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.available_hours",
+              "value": 1
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

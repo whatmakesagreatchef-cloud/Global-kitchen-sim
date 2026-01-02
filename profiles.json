@@ -1,0 +1,96 @@
+{
+  "version": "v1",
+  "rubric_profiles": [
+    {
+      "id": "profile_solo_standard",
+      "name": "Solo Standard",
+      "criteria_multipliers": {
+        "taste": 1.0,
+        "technique": 1.05,
+        "workflow": 1.0,
+        "hygiene": 1.0,
+        "presentation": 1.0,
+        "timing": 1.05
+      },
+      "notes": "Baseline for solo comps; timing matters slightly more."
+    },
+    {
+      "id": "profile_team_workflow",
+      "name": "Team Workflow Heavy",
+      "criteria_multipliers": {
+        "taste": 1.0,
+        "technique": 1.05,
+        "workflow": 1.2,
+        "hygiene": 1.0,
+        "presentation": 1.0,
+        "timing": 1.05
+      },
+      "notes": "For team hot kitchen / relay formats."
+    },
+    {
+      "id": "profile_bocuse_showpiece",
+      "name": "Bocuse Showpiece",
+      "criteria_multipliers": {
+        "taste": 1.05,
+        "technique": 1.1,
+        "workflow": 1.05,
+        "hygiene": 1.0,
+        "presentation": 1.2,
+        "timing": 1.1
+      },
+      "notes": "Presentation and technique emphasized."
+    },
+    {
+      "id": "profile_olympics_technical",
+      "name": "Olympics Technical",
+      "criteria_multipliers": {
+        "taste": 1.05,
+        "technique": 1.15,
+        "workflow": 1.15,
+        "hygiene": 1.05,
+        "presentation": 1.05,
+        "timing": 1.05
+      },
+      "notes": "High bar: technique + workflow + hygiene all matter."
+    },
+    {
+      "id": "profile_mystery_adapt",
+      "name": "Mystery Box Adaptability",
+      "criteria_multipliers": {
+        "taste": 1.0,
+        "technique": 1.0,
+        "workflow": 1.05,
+        "hygiene": 1.0,
+        "presentation": 0.95,
+        "timing": 1.05
+      },
+      "notes": "Rewards adapting under uncertainty; slightly reduces plating theatre."
+    },
+    {
+      "id": "profile_cold_display_finish",
+      "name": "Cold Display Finish",
+      "criteria_multipliers": {
+        "taste": 0.9,
+        "technique": 1.1,
+        "workflow": 0.95,
+        "hygiene": 1.05,
+        "presentation": 1.25,
+        "timing": 0.8
+      },
+      "notes": "Salon logic: symmetry, finish, and hygiene dominate; timing less relevant."
+    },
+    {
+      "id": "profile_pastry_technical",
+      "name": "Pastry Technical",
+      "criteria_multipliers": {
+        "taste": 1.05,
+        "technique": 1.15,
+        "workflow": 1.0,
+        "hygiene": 1.05,
+        "presentation": 1.2,
+        "timing": 1.0
+      },
+      "notes": "Sugar/chocolate precision with a strong visual component."
+    }
+  ]
+}

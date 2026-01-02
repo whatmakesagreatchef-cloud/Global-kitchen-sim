@@ -1,0 +1,205 @@
+{
+  "id": "FR_m002_choose_circuit",
+  "title": "Choose Your Campaign",
+  "chapter": "CH1_TRYOUTS",
+  "week": 2,
+  "type": "story",
+  "intro": [
+    "The season opens up in front of you.",
+    "You can chase a solo title, build a Bocuse pair, or scale up into a global team pathway."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_solo_circuit",
+      "label": "Commit to the Solo Circuit (fast entry, personal execution)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 10,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You commit to personal execution. Every mistake is yours to own.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_CIRCUIT_SOLO"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_CIRCUIT_SOLO"
+          ]
+        },
+        "fail": {
+          "text": "The team doubts the plan. You’ll need to prove it with results.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_bocuse_track",
+      "label": "Commit to the Bocuse Track (candidate + commis, showpiece pressure)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Two people. One clock. The theatre starts now.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_CIRCUIT_BOCUSE"
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_CIRCUIT_BOCUSE"
+          ]
+        },
+        "fail": {
+          "text": "You feel the weight of it. The room isn’t ready to commit yet.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c3_team_global",
+      "label": "Commit to World Cup / Olympics Team Track (bigger team, bigger logistics)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You go big. Cohesion becomes your most important ingredient.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_CIRCUIT_TEAM_GLOBAL"
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -1
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_CIRCUIT_TEAM_GLOBAL"
+          ]
+        },
+        "fail": {
+          "text": "The plan sounds too big. Build credibility first.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c4_pastry_track",
+      "label": "Commit to the Pastry Track (showpiece precision + salon finish)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 12,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You choose fragile perfection — where one crack can ruin weeks of work.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_CIRCUIT_PASTRY"
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            }
+          ],
+          "set_flags": [
+            "FLAG_CIRCUIT_PASTRY"
+          ]
+        },
+        "fail": {
+          "text": "It’s not the right season for showpieces. Not yet.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

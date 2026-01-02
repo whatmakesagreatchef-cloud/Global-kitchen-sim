@@ -1,0 +1,74 @@
+{
+  "id": "US_m007b_bocuse_final_prep",
+  "title": "Bocuse Final Push",
+  "chapter": "CH6_GLOBAL_PUSH",
+  "week": 12,
+  "type": "story",
+  "intro": [
+    "Finals are won in small decisions: finish, timing, cleanliness.",
+    "Anything emotional will show up in the food."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_BOCUSE_QUALIFIED"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_full_run",
+      "label": "Full run-through under judge conditions",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 28,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your execution becomes quiet and precise.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 5
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_BOCUSE_FINAL_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_BOCUSE_FINAL_READY"
+          ]
+        },
+        "fail": {
+          "text": "The pressure exposes cracks. Your pair needs recovery.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 8
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 6
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

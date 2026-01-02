@@ -1,0 +1,102 @@
+{
+  "id": "US_m006d_pastry_entry",
+  "title": "Enter Pastry Showpiece",
+  "chapter": "CH4_SETBACK",
+  "week": 9,
+  "type": "story",
+  "intro": [
+    "The showpiece comp is open. Entering makes the work real.",
+    "Not entering keeps you safe — and invisible."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_PASTRY"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_enter",
+      "label": "Enter pastry showpiece competition",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 12,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You commit. The next weeks are about protecting the work.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_PASTRY_ENTERED_SHOWPIECE"
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_PASTRY_ENTERED_SHOWPIECE"
+          ]
+        },
+        "fail": {
+          "text": "You miss the entry. The momentum collapses.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_delay",
+      "label": "Delay and keep training",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 0,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You keep refining, but you lose the opportunity window.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -1
+            }
+          ]
+        },
+        "fail": {
+          "text": "N/A",
+          "effects": []
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "id": "season_2026_open_calendar",
+  "weeks": 16,
+  "mode": "open_calendar",
+  "description": "Choose opportunities as they appear. The calendar offers solo, team, pastry, Bocuse, World Cup, and Olympics events.",
+  "available_circuits": [
+    "circuit_solo",
+    "circuit_bocuse",
+    "circuit_team_global",
+    "circuit_pastry",
+    "circuit_worldcup"
+  ],
+  "weekly_offers": [
+    {
+      "week": 4,
+      "offers": [
+        "comp_local_solo"
+      ]
+    },
+    {
+      "week": 6,
+      "offers": [
+        "comp_mystery_box_solo"
+      ]
+    },
+    {
+      "week": 7,
+      "offers": [
+        "comp_relay_team_local"
+      ]
+    },
+    {
+      "week": 8,
+      "offers": [
+        "comp_bocuse_trials"
+      ]
+    },
+    {
+      "week": 9,
+      "offers": [
+        "comp_cold_display_salon",
+        "comp_pastry_showpiece"
+      ]
+    },
+    {
+      "week": 10,
+      "offers": [
+        "comp_team_worldcup_qual",
+        "comp_national_solo"
+      ]
+    },
+    {
+      "week": 12,
+      "offers": [
+        "comp_bocuse_final"
+      ]
+    },
+    {
+      "week": 16,
+      "offers": [
+        "comp_culinary_olympics"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "chapter": "CH1_TRYOUTS",
+      "weeks": [
+        1,
+        2
+      ]
+    },
+    {
+      "chapter": "CH2_FUNDING",
+      "weeks": [
+        3,
+        4
+      ]
+    },
+    {
+      "chapter": "CH3_TRAINING",
+      "weeks": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "chapter": "CH4_SETBACK",
+      "weeks": [
+        9
+      ]
+    },
+    {
+      "chapter": "CH5_QUALIFIERS",
+      "weeks": [
+        10,
+        11
+      ]
+    },
+    {
+      "chapter": "CH6_GLOBAL_PUSH",
+      "weeks": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ]
+}

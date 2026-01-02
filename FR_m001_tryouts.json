@@ -1,0 +1,132 @@
+{
+  "id": "FR_m001_tryouts",
+  "title": "Tryouts: Build Your Squad",
+  "chapter": "CH1_TRYOUTS",
+  "week": 1,
+  "type": "story",
+  "intro": [
+    "The call goes out. Trials are opening.",
+    "You’re not just choosing cooks — you’re choosing a culture."
+  ],
+  "requirements": {
+    "flags_all": [],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_open_trials",
+      "label": "Run open trials (more talent, more drama)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 10,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "A big turnout. You see real potential — and real egos.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_TRIALS_HELD"
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLES_DEFINED"
+            }
+          ],
+          "set_flags": [
+            "FLAG_TRIALS_HELD",
+            "FLAG_ROLES_DEFINED"
+          ]
+        },
+        "fail": {
+          "text": "Turnout is low. You may need to recruit aggressively.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -1
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_invite_only",
+      "label": "Invite-only trials (less chaos, less discovery)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "A smaller group, higher focus. You control the culture early.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_TRIALS_HELD"
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ROLES_DEFINED"
+            }
+          ],
+          "set_flags": [
+            "FLAG_TRIALS_HELD",
+            "FLAG_ROLES_DEFINED"
+          ]
+        },
+        "fail": {
+          "text": "People feel excluded. Rumours start.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_POLITICS"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

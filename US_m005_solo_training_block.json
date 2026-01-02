@@ -1,0 +1,125 @@
+{
+  "id": "US_m005_solo_training_block",
+  "title": "Solo Training Block",
+  "chapter": "CH3_TRAINING",
+  "week": 5,
+  "type": "story",
+  "intro": [
+    "Solo comps punish hesitation.",
+    "Build repeatability: mise, timing calls, and clean finishing."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_SOLO"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_precision",
+      "label": "Precision week (knife + plating runs)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 12,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your competitor gets sharper and calmer under the clock.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_SOLO_FOUNDATION"
+            }
+          ],
+          "set_flags": [
+            "FLAG_SOLO_FOUNDATION"
+          ]
+        },
+        "fail": {
+          "text": "The pace exposes gaps. You need a reset before comp day.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_mystery",
+      "label": "Mystery sprint (adaptability training)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "They stop panicking when the brief changes.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_ADAPT_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_ADAPT_READY"
+          ]
+        },
+        "fail": {
+          "text": "The unknown rattles the room.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

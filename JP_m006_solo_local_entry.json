@@ -1,0 +1,102 @@
+{
+  "id": "JP_m006_solo_local_entry",
+  "title": "Local Solo Entry",
+  "chapter": "CH2_FUNDING",
+  "week": 6,
+  "type": "story",
+  "intro": [
+    "You can enter a local solo cook-off now.",
+    "Winning builds momentum. Losing teaches brutally."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_SOLO"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_enter",
+      "label": "Enter the local solo cook-off",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 10,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You lock in the entry. The pressure becomes real.",
+          "effects": [
+            {
+              "op": "set_flag",
+              "value": "FLAG_SOLO_ENTERED_LOCAL"
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 2
+            }
+          ],
+          "set_flags": [
+            "FLAG_SOLO_ENTERED_LOCAL"
+          ]
+        },
+        "fail": {
+          "text": "Admin problems. You miss the entry window.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": -1
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_skip",
+      "label": "Skip it and train longer (safer, slower)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 0,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You delay competition exposure, but tighten your system.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -1
+            }
+          ]
+        },
+        "fail": {
+          "text": "N/A",
+          "effects": []
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

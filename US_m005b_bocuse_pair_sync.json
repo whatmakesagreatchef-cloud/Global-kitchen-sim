@@ -1,0 +1,124 @@
+{
+  "id": "US_m005b_bocuse_pair_sync",
+  "title": "Bocuse Pair Sync",
+  "chapter": "CH3_TRAINING",
+  "week": 5,
+  "type": "story",
+  "intro": [
+    "Bocuse isn’t just cooking — it’s choreography.",
+    "Candidate and commis must communicate under silence."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_BOCUSE"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_scripts",
+      "label": "Write comms scripts and rehearse (slow now, fast later)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your timing calls become automatic. Anxiety drops.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_BOCUSE_SYNC"
+            }
+          ],
+          "set_flags": [
+            "FLAG_BOCUSE_SYNC"
+          ]
+        },
+        "fail": {
+          "text": "The pair argues about control. You lose a week to ego.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -6
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_STATION_TENSION"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_platter",
+      "label": "Platter-first rehearsals (theatre and finish)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 18,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You start thinking like judges. Finish improves.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 1
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_BOCUSE_PLATTER_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_BOCUSE_PLATTER_READY"
+          ]
+        },
+        "fail": {
+          "text": "Beautiful ideas, messy execution. The platter exposes you.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 5
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

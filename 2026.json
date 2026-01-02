@@ -1,0 +1,59 @@
+{
+  "id": "season_2026_slice",
+  "weeks": 12,
+  "chapters": [
+    {
+      "chapter": "CH1_TRYOUTS",
+      "weeks": [
+        1,
+        2
+      ]
+    },
+    {
+      "chapter": "CH2_FUNDING",
+      "weeks": [
+        3,
+        4
+      ]
+    },
+    {
+      "chapter": "CH3_TRAINING",
+      "weeks": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "chapter": "CH4_SETBACK",
+      "weeks": [
+        9
+      ]
+    },
+    {
+      "chapter": "CH5_QUALIFIERS",
+      "weeks": [
+        10
+      ]
+    },
+    {
+      "chapter": "CH6_SHOWCASE",
+      "weeks": [
+        12
+      ]
+    }
+  ],
+  "competition_weeks": [
+    {
+      "week": 10,
+      "name": "Qualifiers",
+      "rubric_id": "rubric_standard"
+    },
+    {
+      "week": 12,
+      "name": "National Showcase",
+      "rubric_id": "rubric_standard"
+    }
+  ]
+}

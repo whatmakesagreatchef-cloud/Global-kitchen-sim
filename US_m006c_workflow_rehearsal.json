@@ -1,0 +1,119 @@
+{
+  "id": "US_m006c_workflow_rehearsal",
+  "title": "Workflow Rehearsal Week",
+  "chapter": "CH3_TRAINING",
+  "week": 6,
+  "type": "story",
+  "intro": [
+    "This is the week you kill chaos.",
+    "You rehearse handoffs, timing calls, and plating consistency."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_TEAM_GLOBAL"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_relay",
+      "label": "Relay + handoff training (reduce comp variance)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 16,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Handoffs become clean. Timing stops wobbling.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 3
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": 2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_HANDOFFS_CLEAN"
+            }
+          ],
+          "set_flags": [
+            "FLAG_HANDOFFS_CLEAN"
+          ]
+        },
+        "fail": {
+          "text": "Handoffs trigger blame. Conflict risk spikes.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -5
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_PASS_ARGUMENTS"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_hygiene_audit",
+      "label": "Hygiene audit + drills (penalty prevention)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 14,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You reduce penalty risk on comp day.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -3
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_HYGIENE_LOCKED"
+            }
+          ],
+          "set_flags": [
+            "FLAG_HYGIENE_LOCKED"
+          ]
+        },
+        "fail": {
+          "text": "You find issues late. Fixing them costs morale.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -2
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

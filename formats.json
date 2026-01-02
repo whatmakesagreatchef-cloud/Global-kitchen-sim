@@ -1,0 +1,295 @@
+{
+  "version": "v1",
+  "formats": [
+    {
+      "id": "solo_live_cooking",
+      "name": "Solo Live Cooking",
+      "team_size": {
+        "min": 1,
+        "max": 1
+      },
+      "roles_required": [
+        "competitor"
+      ],
+      "time_limit_minutes": 60,
+      "deliverables": [
+        "2 plated portions"
+      ],
+      "format_multipliers": {
+        "taste": 1.0,
+        "technique": 1.05,
+        "workflow": 1.0,
+        "hygiene": 1.0,
+        "presentation": 1.0,
+        "timing": 1.05
+      },
+      "penalty_overrides": [
+        {
+          "key": "late_plating",
+          "points": -5
+        }
+      ]
+    },
+    {
+      "id": "team_hot_kitchen",
+      "name": "Team Hot Kitchen",
+      "team_size": {
+        "min": 2,
+        "max": 6
+      },
+      "roles_required": [
+        "captain",
+        "hot",
+        "larder"
+      ],
+      "time_limit_minutes": 90,
+      "deliverables": [
+        "team platter",
+        "multiple plates"
+      ],
+      "format_multipliers": {
+        "taste": 1.0,
+        "technique": 1.05,
+        "workflow": 1.15,
+        "hygiene": 1.0,
+        "presentation": 1.0,
+        "timing": 1.05
+      },
+      "cohesion_importance": 1.25,
+      "penalty_overrides": [
+        {
+          "key": "handoff_error",
+          "points": -3
+        }
+      ]
+    },
+    {
+      "id": "bocuse_style",
+      "name": "Bocuse-Style (Candidate + Commis)",
+      "team_size": {
+        "min": 2,
+        "max": 2
+      },
+      "roles_required": [
+        "candidate",
+        "commis"
+      ],
+      "time_limit_minutes": 300,
+      "deliverables": [
+        "platter",
+        "plates"
+      ],
+      "format_multipliers": {
+        "taste": 1.05,
+        "technique": 1.1,
+        "workflow": 1.05,
+        "hygiene": 1.0,
+        "presentation": 1.15,
+        "timing": 1.1
+      },
+      "cohesion_importance": 1.15,
+      "penalty_overrides": [
+        {
+          "key": "late_platter",
+          "points": -10
+        }
+      ]
+    },
+    {
+      "id": "worldcup_team",
+      "name": "World Cup Team (Hot + Optional Pastry)",
+      "team_size": {
+        "min": 4,
+        "max": 8
+      },
+      "roles_required": [
+        "team_manager",
+        "hot_lead",
+        "pastry_lead"
+      ],
+      "time_limit_minutes": 300,
+      "deliverables": [
+        "hot course set",
+        "pastry set",
+        "display elements"
+      ],
+      "format_multipliers": {
+        "taste": 1.05,
+        "technique": 1.1,
+        "workflow": 1.1,
+        "hygiene": 1.0,
+        "presentation": 1.1,
+        "timing": 1.05
+      },
+      "cohesion_importance": 1.35,
+      "penalty_overrides": [
+        {
+          "key": "missing_element",
+          "points": -8
+        }
+      ]
+    },
+    {
+      "id": "olympics_hot_kitchen",
+      "name": "Culinary Olympics Hot Kitchen",
+      "team_size": {
+        "min": 4,
+        "max": 6
+      },
+      "roles_required": [
+        "captain",
+        "hot",
+        "larder",
+        "pastry_support"
+      ],
+      "time_limit_minutes": 300,
+      "deliverables": [
+        "set menu",
+        "consistent plating"
+      ],
+      "format_multipliers": {
+        "taste": 1.05,
+        "technique": 1.15,
+        "workflow": 1.15,
+        "hygiene": 1.05,
+        "presentation": 1.05,
+        "timing": 1.05
+      },
+      "cohesion_importance": 1.3,
+      "penalty_overrides": [
+        {
+          "key": "hygiene_fault",
+          "points": -10
+        }
+      ]
+    },
+    {
+      "id": "solo_mystery_box",
+      "name": "Solo Mystery Box",
+      "team_size": {
+        "min": 1,
+        "max": 1
+      },
+      "roles_required": [
+        "competitor"
+      ],
+      "time_limit_minutes": 60,
+      "deliverables": [
+        "2 plated portions (brief revealed on day)"
+      ],
+      "format_multipliers": {
+        "taste": 1.0,
+        "technique": 1.0,
+        "workflow": 1.0,
+        "hygiene": 1.0,
+        "presentation": 0.95,
+        "timing": 1.05
+      },
+      "special_rules": [
+        "higher_variance",
+        "adaptability_bonus"
+      ],
+      "penalty_overrides": [
+        {
+          "key": "missing_element",
+          "points": -6
+        }
+      ]
+    },
+    {
+      "id": "team_relay",
+      "name": "Team Relay (Handoffs)",
+      "team_size": {
+        "min": 3,
+        "max": 5
+      },
+      "roles_required": [
+        "captain",
+        "starter",
+        "finisher"
+      ],
+      "time_limit_minutes": 75,
+      "deliverables": [
+        "relay finish (handoff-critical)"
+      ],
+      "format_multipliers": {
+        "taste": 1.0,
+        "technique": 1.0,
+        "workflow": 1.25,
+        "hygiene": 1.0,
+        "presentation": 1.0,
+        "timing": 1.1
+      },
+      "cohesion_importance": 1.4,
+      "penalty_overrides": [
+        {
+          "key": "handoff_error",
+          "points": -5
+        }
+      ]
+    },
+    {
+      "id": "team_cold_display",
+      "name": "Cold Display Salon",
+      "team_size": {
+        "min": 2,
+        "max": 6
+      },
+      "roles_required": [
+        "captain",
+        "cold_work"
+      ],
+      "time_limit_minutes": 0,
+      "deliverables": [
+        "cold display (salon standard)"
+      ],
+      "format_multipliers": {
+        "taste": 0.9,
+        "technique": 1.1,
+        "workflow": 0.95,
+        "hygiene": 1.05,
+        "presentation": 1.25,
+        "timing": 0.8
+      },
+      "special_rules": [
+        "finish_and_symmetry",
+        "no_live_timing_pressure"
+      ],
+      "penalty_overrides": [
+        {
+          "key": "finish_fault",
+          "points": -6
+        }
+      ]
+    },
+    {
+      "id": "pastry_showpiece",
+      "name": "Pastry Showpiece (Sugar/Chocolate)",
+      "team_size": {
+        "min": 1,
+        "max": 2
+      },
+      "roles_required": [
+        "pastry_competitor"
+      ],
+      "time_limit_minutes": 240,
+      "deliverables": [
+        "showpiece + plated dessert"
+      ],
+      "format_multipliers": {
+        "taste": 1.05,
+        "technique": 1.15,
+        "workflow": 1.0,
+        "hygiene": 1.05,
+        "presentation": 1.25,
+        "timing": 1.0
+      },
+      "penalty_overrides": [
+        {
+          "key": "structure_failure",
+          "points": -12
+        }
+      ]
+    }
+  ]
+}

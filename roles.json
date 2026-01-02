@@ -1,0 +1,193 @@
+{
+  "version": "v1",
+  "roles": [
+    {
+      "id": "competitor",
+      "name": "Competitor",
+      "applies_to_formats": [
+        "solo_live_cooking",
+        "solo_mystery_box"
+      ],
+      "responsibilities": [
+        "Own all stations",
+        "Time management",
+        "Self-check hygiene",
+        "Plating consistency"
+      ],
+      "skill_focus": {
+        "workflow": 1.1,
+        "timing": 1.1,
+        "hygiene": 1.05
+      }
+    },
+    {
+      "id": "candidate",
+      "name": "Candidate",
+      "applies_to_formats": [
+        "bocuse_style"
+      ],
+      "responsibilities": [
+        "Lead cooking plan",
+        "Direct commis",
+        "Platter execution",
+        "Final pass calls"
+      ],
+      "skill_focus": {
+        "technique": 1.1,
+        "timing": 1.05,
+        "workflow": 1.05
+      }
+    },
+    {
+      "id": "commis",
+      "name": "Commis",
+      "applies_to_formats": [
+        "bocuse_style"
+      ],
+      "responsibilities": [
+        "Support candidate",
+        "Precision prep",
+        "Garnish consistency",
+        "Silent communication"
+      ],
+      "skill_focus": {
+        "workflow": 1.1,
+        "knife": 1.05,
+        "timing": 1.05
+      }
+    },
+    {
+      "id": "captain",
+      "name": "Team Captain",
+      "applies_to_formats": [
+        "team_hot_kitchen",
+        "team_relay",
+        "olympics_hot_kitchen"
+      ],
+      "responsibilities": [
+        "Call timing",
+        "Resolve pass conflicts",
+        "Assign stations",
+        "Maintain standards"
+      ],
+      "skill_focus": {
+        "workflow": 1.15,
+        "timing": 1.1,
+        "hygiene": 1.05
+      }
+    },
+    {
+      "id": "hot_lead",
+      "name": "Hot Kitchen Lead",
+      "applies_to_formats": [
+        "team_hot_kitchen",
+        "worldcup_team",
+        "olympics_hot_kitchen"
+      ],
+      "responsibilities": [
+        "Protein cookery",
+        "Sauce execution",
+        "Heat management",
+        "Coordination with garnish"
+      ],
+      "skill_focus": {
+        "technique": 1.1,
+        "sauce": 1.15,
+        "timing": 1.1
+      }
+    },
+    {
+      "id": "larder",
+      "name": "Larder / Cold Work",
+      "applies_to_formats": [
+        "team_hot_kitchen",
+        "worldcup_team",
+        "olympics_hot_kitchen",
+        "team_cold_display"
+      ],
+      "responsibilities": [
+        "Garnish",
+        "Cold elements",
+        "Knife work",
+        "Plating support"
+      ],
+      "skill_focus": {
+        "knife": 1.1,
+        "presentation": 1.1,
+        "workflow": 1.05
+      }
+    },
+    {
+      "id": "pastry_lead",
+      "name": "Pastry Lead",
+      "applies_to_formats": [
+        "worldcup_team",
+        "olympics_hot_kitchen"
+      ],
+      "responsibilities": [
+        "Dessert plan",
+        "Temperature control",
+        "Showpiece/finishing",
+        "Coordination with service"
+      ],
+      "skill_focus": {
+        "pastry": 1.15,
+        "technique": 1.05,
+        "presentation": 1.1
+      }
+    },
+    {
+      "id": "pastry_competitor",
+      "name": "Pastry Competitor",
+      "applies_to_formats": [
+        "pastry_showpiece"
+      ],
+      "responsibilities": [
+        "Showpiece structure",
+        "Fragile handling",
+        "Clean finish",
+        "Plated dessert accuracy"
+      ],
+      "skill_focus": {
+        "technique": 1.15,
+        "presentation": 1.15,
+        "hygiene": 1.05
+      }
+    },
+    {
+      "id": "team_manager",
+      "name": "Team Manager",
+      "applies_to_formats": [
+        "worldcup_team"
+      ],
+      "responsibilities": [
+        "Logistics",
+        "Training plan",
+        "Conflict management",
+        "Sponsor comms"
+      ],
+      "skill_focus": {
+        "workflow": 1.1,
+        "hygiene": 1.05
+      }
+    }
+  ],
+  "assignment_rules": {
+    "max_primary_roles_per_member": 1,
+    "allow_secondary_roles": true,
+    "conflict_risk_rules": [
+      {
+        "tag": "clash:ego",
+        "same_station_multiplier": 1.2
+      },
+      {
+        "tag": "clash:hierarchy",
+        "captain_pair_multiplier": 1.25
+      },
+      {
+        "tag": "clash:communication",
+        "handoff_multiplier": 1.2
+      }
+    ]
+  }
+}

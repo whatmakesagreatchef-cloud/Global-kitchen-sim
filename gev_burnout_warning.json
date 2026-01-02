@@ -1,0 +1,55 @@
+{
+  "id": "GEV_burnout_warning",
+  "title": "Burnout Warning",
+  "trigger": {
+    "type": "conditional",
+    "all": [
+      {
+        "path": "team.fatigue",
+        "gte": 75
+      }
+    ]
+  },
+  "text": "The team is running on fumes. Mistakes are starting to feel inevitable.",
+  "choices": [
+    {
+      "label": "Call a reset week (rest + reflection)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.fatigue",
+          "value": -18
+        },
+        {
+          "op": "inc",
+          "path": "team.morale",
+          "value": 4
+        },
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": -3
+        }
+      ]
+    },
+    {
+      "label": "Push through (readiness now, risk later)",
+      "effects": [
+        {
+          "op": "inc",
+          "path": "team.readiness",
+          "value": 4
+        },
+        {
+          "op": "inc",
+          "path": "team.risk",
+          "value": 10
+        },
+        {
+          "op": "set_flag",
+          "value": "FLAG_REDLINE"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "version": "v1",
+  "competitions": [
+    {
+      "id": "comp_local_solo",
+      "name": "Local Solo Cook-off",
+      "type": "solo",
+      "format_id": "solo_live_cooking",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_solo_standard",
+      "gates": {
+        "min_reputation": 0
+      },
+      "stakes": {
+        "reputation_gain_win": 6,
+        "budget_gain_win": 250
+      },
+      "week_suggestion": 4
+    },
+    {
+      "id": "comp_national_solo",
+      "name": "National Solo Final",
+      "type": "solo",
+      "format_id": "solo_live_cooking",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_solo_standard",
+      "gates": {
+        "min_reputation": 25,
+        "requires_flag_any": [
+          "FLAG_QUALIFIED_SOLO"
+        ]
+      },
+      "stakes": {
+        "reputation_gain_win": 12,
+        "budget_gain_win": 600
+      },
+      "week_suggestion": 10
+    },
+    {
+      "id": "comp_bocuse_trials",
+      "name": "Bocuse-Style Trials",
+      "type": "bocuse",
+      "format_id": "bocuse_style",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_bocuse_showpiece",
+      "gates": {
+        "min_reputation": 15
+      },
+      "stakes": {
+        "reputation_gain_win": 10,
+        "budget_gain_win": 800
+      },
+      "week_suggestion": 8
+    },
+    {
+      "id": "comp_bocuse_final",
+      "name": "Bocuse-Style Final",
+      "type": "bocuse",
+      "format_id": "bocuse_style",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_bocuse_showpiece",
+      "gates": {
+        "min_reputation": 35,
+        "requires_flag_any": [
+          "FLAG_BOCUSE_QUALIFIED"
+        ]
+      },
+      "stakes": {
+        "reputation_gain_win": 18,
+        "budget_gain_win": 1500
+      },
+      "week_suggestion": 12
+    },
+    {
+      "id": "comp_team_worldcup_qual",
+      "name": "Team World Cup Qualifier",
+      "type": "team",
+      "format_id": "worldcup_team",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_team_workflow",
+      "gates": {
+        "min_reputation": 20,
+        "min_team_size": 4
+      },
+      "stakes": {
+        "reputation_gain_win": 14,
+        "budget_gain_win": 1200
+      },
+      "week_suggestion": 10
+    },
+    {
+      "id": "comp_culinary_olympics",
+      "name": "Culinary Olympics (Hot Kitchen)",
+      "type": "team",
+      "format_id": "olympics_hot_kitchen",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_olympics_technical",
+      "gates": {
+        "min_reputation": 40,
+        "min_team_size": 4,
+        "requires_flag_any": [
+          "FLAG_TEAM_SELECTED"
+        ]
+      },
+      "stakes": {
+        "reputation_gain_win": 25,
+        "budget_gain_win": 2500
+      },
+      "week_suggestion": 16
+    },
+    {
+      "id": "comp_mystery_box_solo",
+      "name": "Mystery Box Solo Challenge",
+      "type": "solo",
+      "format_id": "solo_mystery_box",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_mystery_adapt",
+      "gates": {
+        "min_reputation": 10
+      },
+      "stakes": {
+        "reputation_gain_win": 8,
+        "budget_gain_win": 350
+      },
+      "week_suggestion": 6
+    },
+    {
+      "id": "comp_relay_team_local",
+      "name": "Team Relay Showdown",
+      "type": "team",
+      "format_id": "team_relay",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_team_workflow",
+      "gates": {
+        "min_reputation": 15,
+        "min_team_size": 3
+      },
+      "stakes": {
+        "reputation_gain_win": 10,
+        "budget_gain_win": 600
+      },
+      "week_suggestion": 7
+    },
+    {
+      "id": "comp_cold_display_salon",
+      "name": "Cold Display Salon",
+      "type": "team",
+      "format_id": "team_cold_display",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_cold_display_finish",
+      "gates": {
+        "min_reputation": 18,
+        "min_team_size": 2
+      },
+      "stakes": {
+        "reputation_gain_win": 11,
+        "budget_gain_win": 500
+      },
+      "week_suggestion": 9
+    },
+    {
+      "id": "comp_pastry_showpiece",
+      "name": "Pastry Showpiece Challenge",
+      "type": "solo",
+      "format_id": "pastry_showpiece",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_pastry_technical",
+      "gates": {
+        "min_reputation": 12
+      },
+      "stakes": {
+        "reputation_gain_win": 10,
+        "budget_gain_win": 700
+      },
+      "week_suggestion": 9
+    },
+    {
+      "id": "comp_worldcup_final",
+      "name": "World Cup (Final)",
+      "type": "team",
+      "format_id": "worldcup_team",
+      "rubric_id": "rubric_standard",
+      "rubric_profile_id": "profile_team_workflow",
+      "gates": {
+        "min_reputation": 45,
+        "min_team_size": 4,
+        "requires_flag_any": [
+          "FLAG_WORLD_CUP_QUALIFIED"
+        ]
+      },
+      "stakes": {
+        "reputation_gain_win": 30,
+        "budget_gain_win": 3500
+      },
+      "week_suggestion": 18
+    }
+  ]
+}

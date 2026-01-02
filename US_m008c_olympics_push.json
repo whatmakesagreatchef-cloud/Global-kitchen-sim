@@ -1,0 +1,123 @@
+{
+  "id": "US_m008c_olympics_push",
+  "title": "Culinary Olympics Push",
+  "chapter": "CH6_GLOBAL_PUSH",
+  "week": 16,
+  "type": "story",
+  "intro": [
+    "The Olympics is the peak: technique, workflow, hygiene — all visible.",
+    "This is where leadership is tested."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_TEAM_SELECTED"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_peak_week",
+      "label": "Peak week plan (taper fatigue, lock consistency)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 34,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "You arrive sharp, not exhausted.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": -6
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_OLYMPICS_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_OLYMPICS_READY"
+          ]
+        },
+        "fail": {
+          "text": "You mistime the taper. You arrive tired.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_media_obligations",
+      "label": "Accept heavy media obligations (money/reputation, energy cost)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 28,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Sponsors love it. The team pays it back in sleep.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.budget",
+              "value": 900
+            },
+            {
+              "op": "inc",
+              "path": "team.reputation",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 8
+            }
+          ]
+        },
+        "fail": {
+          "text": "You lose training time and gain little exposure.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.available_hours",
+              "value": -3
+            },
+            {
+              "op": "inc",
+              "path": "team.morale",
+              "value": -3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}

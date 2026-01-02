@@ -1,0 +1,125 @@
+{
+  "id": "JP_m007c_worldcup_qual_prep",
+  "title": "World Cup Qualifier Prep",
+  "chapter": "CH5_QUALIFIERS",
+  "week": 10,
+  "type": "story",
+  "intro": [
+    "Qualifiers punish disorganisation.",
+    "Decide if you chase perfection or consistency."
+  ],
+  "requirements": {
+    "flags_all": [
+      "FLAG_CIRCUIT_TEAM_GLOBAL"
+    ],
+    "flags_none": [],
+    "min_reputation": 0
+  },
+  "choices": [
+    {
+      "id": "c1_consistency",
+      "label": "Consistency plan (lower variance)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 22,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "Your runs look boring — and that’s why you qualify.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 4
+            },
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": -2
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_WORLDCUP_READY"
+            }
+          ],
+          "set_flags": [
+            "FLAG_WORLDCUP_READY"
+          ]
+        },
+        "fail": {
+          "text": "You can’t keep consistency. The pass becomes chaos.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.risk",
+              "value": 6
+            },
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": -1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c2_perfection",
+      "label": "Perfection chase (higher upside, higher burnout)",
+      "checks": [
+        {
+          "stat": "team.reputation",
+          "difficulty": 26,
+          "success_mods": [],
+          "fail_mods": []
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "text": "When it lands, it’s spectacular. When it doesn’t, it hurts.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.readiness",
+              "value": 5
+            },
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 6
+            },
+            {
+              "op": "set_flag",
+              "value": "FLAG_REDLINE"
+            }
+          ],
+          "set_flags": [
+            "FLAG_REDLINE"
+          ]
+        },
+        "fail": {
+          "text": "You burn hours for no gain. The team cracks.",
+          "effects": [
+            {
+              "op": "inc",
+              "path": "team.fatigue",
+              "value": 8
+            },
+            {
+              "op": "inc",
+              "path": "team.cohesion",
+              "value": -4
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "rewards": {
+    "unlock_missions": []
+  }
+}
