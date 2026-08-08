@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu Planner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <h1>Menu Planner</h1>
+    <nav class="tabs" id="tabs">
+      <button class="tab-btn is-active" data-tab="plan">Plan</button>
+      <button class="tab-btn" data-tab="recipes">Recipes</button>
+      <button class="tab-btn" data-tab="shopping">Shopping List</button>
+    </nav>
+    <div class="topbar-actions">
+      <button id="exportBtn" class="btn btn-ghost" title="Download your data as JSON">Export</button>
+      <label class="btn btn-ghost" title="Load data from a JSON file">
+        Import
+        <input type="file" id="importInput" accept="application/json" hidden />
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section id="tab-plan" class="tab-panel is-active">
+      <div class="week-nav">
+        <button id="prevWeek" class="btn" aria-label="Previous week">&larr; Prev</button>
+        <div id="weekLabel" class="week-label"></div>
+        <button id="nextWeek" class="btn" aria-label="Next week">Next &rarr;</button>
+        <button id="todayWeek" class="btn btn-ghost">This week</button>
+      </div>
+      <div class="plan-grid-wrap">
+        <table class="plan-grid" id="planGrid"></table>
+      </div>
+    </section>
+
+    <section id="tab-recipes" class="tab-panel">
+      <div class="recipes-toolbar">
+        <input type="search" id="recipeSearch" placeholder="Search recipes or tags..." />
+        <select id="recipeCategoryFilter">
+          <option value="">All categories</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+        </select>
+        <button id="newRecipeBtn" class="btn btn-primary">+ New Recipe</button>
+      </div>
+      <div id="recipeList" class="recipe-list"></div>
+    </section>
+
+    <section id="tab-shopping" class="tab-panel">
+      <div class="shopping-toolbar">
+        <div id="shoppingWeekLabel" class="week-label"></div>
+        <div class="shopping-toolbar-actions">
+          <button id="clearCheckedBtn" class="btn btn-ghost">Clear checked</button>
+          <button id="printListBtn" class="btn btn-ghost">Print</button>
+        </div>
+      </div>
+      <ul id="shoppingList" class="shopping-list"></ul>
+      <form id="addExtraForm" class="add-extra-form">
+        <input type="text" id="extraName" placeholder="Add item (e.g. paper towels)" required />
+        <input type="text" id="extraQty" placeholder="Qty" size="4" />
+        <input type="text" id="extraUnit" placeholder="Unit" size="6" />
+        <button type="submit" class="btn">Add</button>
+      </form>
+    </section>
+  </main>
+</div>
+
+<div id="modalRoot"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -36,3 +36,7 @@ defined directly in `main.js` (`ARCHETYPES`, `RUBRIC_STANDARD`) per the shapes i
 `04_Content-Schemas.md`.
 
 See the numbered docs (`00_...` – `18_...`) at the repo root for full specs.
+
+## Other apps in this repo
+- [`menu-planner/`](menu-planner/) — a standalone weekly menu planning app (recipes, weekly plan
+  grid, auto-generated shopping list). Unrelated to the game above; see its own README.
