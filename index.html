@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Global Kitchen Sim</title>
-  <link rel="stylesheet" href="./app/style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="top">
@@ -14,7 +14,7 @@
     </div>
     <div class="row">
       <button id="btnReset" class="secondary">Reset</button>
-      <a id="btnDocs" class="secondary" href="./docs/" target="_blank" rel="noreferrer">Docs Folder</a>
+      <a id="btnDocs" class="secondary" href="./README.md" target="_blank" rel="noreferrer">Docs</a>
     </div>
   </header>
 
@@ -22,15 +22,21 @@
     <section class="card">
       <h2>1) Choose Route</h2>
       <div id="routes" class="row"></div>
-      <p class="hint">Routes load from <code>/data/countries/*.json</code>.</p>
+      <p class="hint">Routes load from <code>AU.json</code>, <code>FR.json</code>, <code>JP.json</code>, <code>US.json</code>.</p>
     </section>
 
     <section class="card">
       <h2>2) Game State</h2>
       <div class="kv" id="stateKv"></div>
+      <h3 class="subhead">Team</h3>
+      <div class="teamList" id="teamList"></div>
       <details>
         <summary>Flags</summary>
         <pre id="flagsOut"></pre>
+      </details>
+      <details>
+        <summary>Career Log</summary>
+        <div id="logOut" class="prose logOut"></div>
       </details>
     </section>
 
@@ -41,6 +47,13 @@
       <div id="missionChoices" class="choices"></div>
       <hr />
       <div id="resultBox" class="result"></div>
+    </section>
+
+    <section class="card span2" id="eventCard" style="display:none">
+      <h2>Event</h2>
+      <div id="eventMeta" class="meta"></div>
+      <div id="eventText" class="prose"></div>
+      <div id="eventChoices" class="choices"></div>
     </section>
 
     <section class="card span2">
@@ -78,6 +91,6 @@
     <span>Tip: publish via GitHub Pages (Settings → Pages → Deploy from branch → main / root).</span>
   </footer>
 
-  <script type="module" src="./app/main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>

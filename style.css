@@ -88,6 +88,25 @@ pre{
   overflow:auto;
   max-height:420px;
 }
+.subhead{margin:14px 0 6px; font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+.teamList{display:flex; flex-direction:column; gap:8px}
+.member{border:1px solid var(--border); border-radius:12px; padding:10px; background:rgba(255,255,255,.04)}
+.member .mname{font-weight:600; display:flex; justify-content:space-between; gap:8px}
+.member .mrole{color:var(--accent); font-size:12px}
+.member .mskills{color:var(--muted); font-size:12px; margin-top:4px; line-height:1.5}
+.logOut{max-height:220px; overflow:auto; font-size:13px}
+.logOut .entry{padding:6px 0; border-bottom:1px dashed var(--border)}
+.logOut .entry:last-child{border-bottom:none}
+.routeCard{border:1px solid var(--border); border-radius:12px; padding:12px; max-width:280px; background:rgba(255,255,255,.04); cursor:pointer; text-align:left}
+.routeCard:hover{border-color:rgba(110,231,255,.65)}
+.routeCard .rname{font-weight:700; font-size:16px}
+.routeCard .rmeta{color:var(--muted); font-size:12px; margin-top:6px; line-height:1.5}
+.routeCard.active{border-color: rgba(125,255,159,.6)}
+.badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; border:1px solid var(--border); margin:2px 4px 0 0; color:var(--muted)}
+.choice button{width:100%; text-align:left}
+.gold{color:#ffd76e}
+.silver{color:#d9e2f1}
+.bronze{color:#e0a56f}
 .foot{margin-top:14px; color:var(--muted)}
 @media (max-width: 900px){
   .grid{grid-template-columns: 1fr}
