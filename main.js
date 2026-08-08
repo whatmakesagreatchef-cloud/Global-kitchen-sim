@@ -50,6 +50,8 @@ const DATA = { routes: {}, missions: {}, events: {}, catalog: null, circuits: nu
 
 let rng = Math.random;
 let gameState = null;
+let pendingDraftRoute = null;
+let pendingPicks = new Set();
 
 // ---------- utils ----------
 
@@ -134,25 +136,47 @@ async function primeRouteContent(route) {
 
 // ---------- career setup ----------
 
-function draftTeam(route) {
-  const pool = shuffle([...ARCHETYPES], rng);
-  return pool.slice(0, 4).map((a, i) => ({
-    id: `${a.id}_${i}`,
-    name: a.name,
-    archetype: a.id,
-    traits: a.traits,
-    conflict_tags: a.conflict_tags,
-    role: null,
-    secondary_roles: [],
-    skills: Object.fromEntries(Object.entries(a.base_skills).map(([k, v]) => [k, clamp(v + Math.round((rng() - 0.5) * 12), 20, 90)])),
-  }));
+function draftTeam(route, archetypeIds) {
+  const ids = archetypeIds && archetypeIds.length ? archetypeIds : shuffle(ARCHETYPES.map((a) => a.id), rng).slice(0, 4);
+  return ids.map((id, i) => {
+    const a = ARCHETYPES.find((x) => x.id === id);
+    return {
+      id: `${a.id}_${i}`,
+      name: a.name,
+      archetype: a.id,
+      traits: a.traits,
+      conflict_tags: a.conflict_tags,
+      role: null,
+      secondary_roles: [],
+      skills: Object.fromEntries(Object.entries(a.base_skills).map(([k, v]) => [k, clamp(v + Math.round((rng() - 0.5) * 12), 20, 90)])),
+    };
+  });
 }
 
-async function startCareer(routeId) {
+function seedRelationships(state) {
+  const members = state.members;
+  for (let i = 0; i < members.length; i++) {
+    for (let j = i + 1; j < members.length; j++) {
+      const a = members[i], b = members[j];
+      const sharedClash = (a.conflict_tags || []).some((t) => (b.conflict_tags || []).includes(t));
+      const stabilizer = a.archetype === 'station_rock' || b.archetype === 'station_rock';
+      let score = 15 + Math.round((rng() - 0.5) * 20);
+      if (sharedClash) score -= 25;
+      if (stabilizer) score += 8;
+      state.relationships[[a.id, b.id].sort().join('|')] = { score: clamp(score, -100, 100), tags: sharedClash ? ['clash'] : [] };
+    }
+  }
+}
+function avgRelationshipScore(state) {
+  const vals = Object.values(state.relationships).map((r) => r.score);
+  return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
+}
+
+async function startCareer(routeId, archetypeIds) {
   const route = DATA.routes[routeId];
   const seed = (Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0;
   rng = mulberry32(seed);
-  const members = draftTeam(route);
+  const members = draftTeam(route, archetypeIds);
   const state = {
     version: 'v1', seed, route_id: routeId, week: 1, chapter: 'CH1_TRYOUTS', flags: [],
     team: {
@@ -169,6 +193,7 @@ async function startCareer(routeId) {
     pending_event: null,
     current_mission_id: null,
   };
+  seedRelationships(state);
   await primeRouteContent(route);
   addLog(state, `New career started on the ${route.name}.`);
   await advance(state);
@@ -274,6 +299,7 @@ function recomputeReadiness(state) {
 function weeklyTick(state) {
   const recover = Math.round(10 * (1 + (state.team.cohesion - 50) / 200));
   incPath(state, 'team.fatigue', -recover);
+  incPath(state, 'team.cohesion', Math.round(avgRelationshipScore(state) / 12));
   recomputeReadiness(state);
 }
 function evalConditions(state, all) {
@@ -465,6 +491,35 @@ function renderTeam(state) {
   }).join('');
 }
 
+function renderRelationships(state) {
+  const el = $('relOut');
+  if (!state || !Object.keys(state.relationships).length) { el.innerHTML = '<span class="hint">No relationship data yet.</span>'; return; }
+  el.innerHTML = Object.entries(state.relationships).map(([key, rel]) => {
+    const [aId, bId] = key.split('|');
+    const a = state.members.find((m) => m.id === aId);
+    const b = state.members.find((m) => m.id === bId);
+    if (!a || !b) return '';
+    const cls = rel.score <= -10 ? 'relTense' : (rel.score >= 25 ? 'relGood' : '');
+    return `<div class="relRow"><span>${a.name} ↔ ${b.name}</span><span class="${cls}">${Math.round(rel.score)}${rel.tags.includes('clash') ? ' · clash' : ''}</span></div>`;
+  }).join('');
+}
+
+const CIRCUIT_FORMAT_UNLOCKS = {
+  FLAG_CIRCUIT_BOCUSE: ['bocuse_style'],
+  FLAG_CIRCUIT_TEAM_GLOBAL: ['team_relay', 'team_cold_display'],
+  FLAG_CIRCUIT_PASTRY: ['pastry_showpiece'],
+};
+function renderTraining(state) {
+  const card = $('trainingCard');
+  if (!state) { card.style.display = 'none'; return; }
+  card.style.display = '';
+  $('trainMember').innerHTML = state.members.map((m) => `<option value="${m.id}">${m.name}</option>`).join('');
+  const unlockedFormats = new Set();
+  Object.entries(CIRCUIT_FORMAT_UNLOCKS).forEach(([flag, formats]) => { if (state.flags.includes(flag)) formats.forEach((f) => unlockedFormats.add(f)); });
+  const sessions = (DATA.sessions?.sessions || []).filter((s) => !s.requires_format || unlockedFormats.has(s.requires_format));
+  $('trainSession').innerHTML = sessions.map((s) => `<option value="${s.id}">${s.name} (${s.hours_cost}h, +${s.fatigue} fatigue)</option>`).join('');
+}
+
 function renderLog(state) {
   const el = $('logOut');
   if (!state) { el.innerHTML = ''; return; }
@@ -547,6 +602,8 @@ function render(state) {
   renderRouteCards();
   renderState(state);
   renderTeam(state);
+  renderRelationships(state);
+  renderTraining(state);
   renderLog(state);
   renderEvent(state);
   renderMission(state);
@@ -555,12 +612,94 @@ function render(state) {
 
 // ---------- event handlers ----------
 
-async function onSelectRoute(routeId) {
+function onSelectRoute(routeId) {
   if (loadSave() && !confirm('Start a new career on this route? Your current save will be overwritten.')) return;
+  pendingDraftRoute = routeId;
+  pendingPicks = new Set();
+  $('draftCard').style.display = '';
+  renderDraftPool();
+  $('draftCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderDraftPool() {
+  const route = DATA.routes[pendingDraftRoute];
+  $('draftRouteName').textContent = route.name;
+  const pool = $('draftPool');
+  pool.innerHTML = '';
+  ARCHETYPES.forEach((a) => {
+    const card = document.createElement('div');
+    card.className = 'archCard' + (pendingPicks.has(a.id) ? ' picked' : '');
+    card.innerHTML = `<div class="aname">${a.name}</div><div class="atraits">${a.traits.join(', ')}</div><div class="askills">${Object.entries(a.base_skills).map(([k, v]) => `${k} ${v}`).join(' · ')}</div>`;
+    card.addEventListener('click', () => toggleDraftPick(a.id));
+    pool.appendChild(card);
+  });
+  updateDraftPreview();
+}
+function toggleDraftPick(id) {
+  if (pendingPicks.has(id)) pendingPicks.delete(id);
+  else { if (pendingPicks.size >= 5) return; pendingPicks.add(id); }
+  renderDraftPool();
+}
+function updateDraftPreview() {
+  const btn = $('btnConfirmDraft');
+  const n = pendingPicks.size;
+  btn.disabled = n < 3 || n > 5;
+  const preview = $('draftPreview');
+  if (!n) { preview.className = 'result'; preview.textContent = 'Pick 3–5 members to preview predicted cohesion.'; return; }
+  const picked = [...pendingPicks].map((id) => ARCHETYPES.find((a) => a.id === id));
+  let clashes = 0, pairs = 0;
+  for (let i = 0; i < picked.length; i++) {
+    for (let j = i + 1; j < picked.length; j++) {
+      pairs++;
+      if (picked[i].conflict_tags.some((t) => picked[j].conflict_tags.includes(t))) clashes++;
+    }
+  }
+  const predictedCohesion = clamp(60 - clashes * 12 + (picked.some((p) => p.id === 'station_rock') ? 6 : 0), 0, 100);
+  preview.className = 'result ' + (clashes > 0 ? 'bad' : 'good');
+  preview.textContent = `${n} picked · predicted starting cohesion ≈ ${predictedCohesion} · ${clashes} personality clash${clashes === 1 ? '' : 'es'} detected across ${pairs} pairs.`;
+}
+async function onConfirmDraft() {
+  if (pendingPicks.size < 3 || pendingPicks.size > 5) return;
+  const routeId = pendingDraftRoute;
+  const picks = [...pendingPicks];
+  $('draftCard').style.display = 'none';
   $('resultBox').className = 'result';
   $('resultBox').textContent = 'Starting new career...';
-  gameState = await startCareer(routeId);
+  gameState = await startCareer(routeId, picks);
+  pendingDraftRoute = null;
+  pendingPicks = new Set();
   $('resultBox').textContent = '';
+  render(gameState);
+}
+function onCancelDraft() {
+  $('draftCard').style.display = 'none';
+  pendingDraftRoute = null;
+  pendingPicks = new Set();
+}
+
+function onTrain() {
+  if (!gameState) return;
+  const memberId = $('trainMember').value;
+  const sessionId = $('trainSession').value;
+  const session = (DATA.sessions?.sessions || []).find((s) => s.id === sessionId);
+  const member = gameState.members.find((m) => m.id === memberId);
+  const box = $('trainResult');
+  if (!session || !member) return;
+  if (gameState.team.available_hours < session.hours_cost) {
+    box.className = 'result bad';
+    box.textContent = `Not enough available hours (need ${session.hours_cost}, have ${gameState.team.available_hours}).`;
+    return;
+  }
+  incPath(gameState, 'team.available_hours', -session.hours_cost);
+  incPath(gameState, 'team.fatigue', session.fatigue);
+  Object.entries(session.skill_gains || {}).forEach(([k, v]) => { member.skills[k] = clamp((member.skills[k] || 0) + v, 0, 100); });
+  if (session.relationship_effect?.cohesion) incPath(gameState, 'team.cohesion', session.relationship_effect.cohesion);
+  if (session.flags_risk && rng() < 0.25) session.flags_risk.forEach((f) => addFlag(gameState, f));
+  addLog(gameState, `Training: ${member.name} ran "${session.name}".`);
+  recomputeReadiness(gameState);
+  save(gameState);
+  box.className = 'result good';
+  box.textContent = `${member.name} completed ${session.name}. Skills up, fatigue +${session.fatigue}, hours -${session.hours_cost}.`;
   render(gameState);
 }
 
@@ -615,6 +754,7 @@ function wireButtons() {
     if (!confirm('Reset your save and start over?')) return;
     localStorage.removeItem(SAVE_KEY);
     gameState = null;
+    onCancelDraft();
     render(null);
   });
   $('btnSimulate').addEventListener('click', onSimulate);
@@ -624,6 +764,9 @@ function wireButtons() {
   $('btnCatalog').addEventListener('click', () => showRaw(DATA.catalog));
   $('btnRoles').addEventListener('click', () => showRaw(DATA.roles));
   $('btnTraining').addEventListener('click', () => showRaw(DATA.sessions));
+  $('btnConfirmDraft').addEventListener('click', onConfirmDraft);
+  $('btnCancelDraft').addEventListener('click', onCancelDraft);
+  $('btnTrain').addEventListener('click', onTrain);
 }
 
 async function boot() {

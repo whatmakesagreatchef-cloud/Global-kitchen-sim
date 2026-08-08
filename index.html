@@ -25,11 +25,26 @@
       <p class="hint">Routes load from <code>AU.json</code>, <code>FR.json</code>, <code>JP.json</code>, <code>US.json</code>.</p>
     </section>
 
+    <section class="card span2" id="draftCard" style="display:none">
+      <h2>Draft Your Team</h2>
+      <p class="hint">Pick 3–5 archetypes for the <span id="draftRouteName"></span>. Each brings a skill lean and a personality risk — watch the predicted cohesion.</p>
+      <div id="draftPool" class="draftPool"></div>
+      <div id="draftPreview" class="result" style="margin-top:10px;"></div>
+      <div class="row" style="margin-top:10px;">
+        <button id="btnConfirmDraft" disabled>Start Career</button>
+        <button id="btnCancelDraft" class="secondary">Back</button>
+      </div>
+    </section>
+
     <section class="card">
       <h2>2) Game State</h2>
       <div class="kv" id="stateKv"></div>
       <h3 class="subhead">Team</h3>
       <div class="teamList" id="teamList"></div>
+      <details>
+        <summary>Relationships</summary>
+        <div id="relOut" class="prose"></div>
+      </details>
       <details>
         <summary>Flags</summary>
         <pre id="flagsOut"></pre>
@@ -38,6 +53,17 @@
         <summary>Career Log</summary>
         <div id="logOut" class="prose logOut"></div>
       </details>
+    </section>
+
+    <section class="card span2" id="trainingCard" style="display:none">
+      <h2>Training</h2>
+      <p class="hint">Spend the team's available hours on a session. Costs hours + fatigue, builds skills and (for group drills) cohesion.</p>
+      <div class="row">
+        <select id="trainMember" style="min-width:200px; padding:10px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text);"></select>
+        <select id="trainSession" style="min-width:280px; padding:10px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text);"></select>
+        <button id="btnTrain">Run Session</button>
+      </div>
+      <div id="trainResult" class="result" style="margin-top:10px;"></div>
     </section>
 
     <section class="card span2">
